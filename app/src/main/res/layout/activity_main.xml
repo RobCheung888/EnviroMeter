@@ -9,13 +9,14 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/header_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/main_container">
-
+            android:id="@+id/header_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/main_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.134">
     </FrameLayout>
 
     <FrameLayout
@@ -29,28 +30,27 @@
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
-        app:layout_constraintTop_toTopOf="@id/main_container"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="16dp">
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+            app:layout_constraintTop_toTopOf="@id/main_container"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="26dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addSubmission"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:clickable="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="20dp"
-            android:elevation="70dp"
-            android:backgroundTint="@color/dark_blue"
-            app:tint="@color/white"
-            app:srcCompat="@drawable/ic_plus" />
+                android:id="@+id/addSubmission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:elevation="70dp"
+                android:backgroundTint="@color/dark_blue"
+                app:tint="@color/white"
+                app:srcCompat="@drawable/ic_plus"
+                app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

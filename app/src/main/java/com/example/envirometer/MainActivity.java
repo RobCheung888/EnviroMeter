@@ -5,7 +5,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
 import com.example.envirometer.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
