@@ -1,98 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                                   android:layout_width="wrap_content"
-                                   android:layout_height="wrap_content"
-                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                   android:padding="10dp"
-                                   android:id="@+id/parent"
-                                   app:cardElevation="20dp"
-                                   app:cardCornerRadius="20dp"
-                                   android:layout_margin="10dp">
-    <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            >
 
-        <TextView
-                android:paddingStart="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Goals"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="35dp"
-                android:layout_marginTop="15dp"
-                android:id="@+id/goalname"/>
+<FrameLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/card_frame"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        tools:context=".TasksFragment"
+        >
 
-        <TextView
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                       android:id="@+id/parent"
+                                       app:cardElevation="20dp"
+                                       app:cardCornerRadius="20dp"
+                                       android:layout_margin="10dp">
+        <RelativeLayout
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status: "
-                android:id="@+id/status"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"
-                android:layout_below="@id/goalname"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginBottom="20dp"
-                />
+                android:background="@color/white"
+                >
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/status"
-                android:text="done"
-                android:textSize="20sp"
-                android:layout_below="@id/goalname"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginBottom="20dp"
-                android:id="@+id/completed"
-                />
+            <TextView
+                    android:paddingStart="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Goals"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="35dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/goalname"/>
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/completed"
-                android:text="/"
-                android:textSize="20sp"
-                android:layout_below="@id/goalname"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="20dp"
-                android:id="@+id/divider"
-                />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status: "
+                    android:id="@+id/status"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="20dp"
+                    android:layout_below="@id/goalname"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginBottom="20dp"
+                    />
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/divider"
-                android:text="target"
-                android:textSize="20sp"
-                android:layout_below="@id/goalname"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="20dp"
-                android:id="@+id/target"
-                />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/status"
+                    android:text="done"
+                    android:textSize="20sp"
+                    android:layout_below="@id/goalname"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/completed"
+                    />
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/target"
-                android:text="100 mL"
-                android:textSize="20sp"
-                android:textColor="@color/dark_blue"
-                android:layout_below="@id/goalname"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginBottom="20dp"
-                android:id="@+id/size"
-                />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/completed"
+                    android:text="/"
+                    android:textSize="20sp"
+                    android:layout_below="@id/goalname"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/divider"
+                    />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/divider"
+                    android:text="target"
+                    android:textSize="20sp"
+                    android:layout_below="@id/goalname"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/target"
+                    />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/target"
+                    android:text="100 mL"
+                    android:textSize="20sp"
+                    android:textColor="@color/dark_blue"
+                    android:layout_below="@id/goalname"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/size"
+                    />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
+
