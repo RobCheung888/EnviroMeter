@@ -96,16 +96,32 @@
             android:id="@+id/text_photo_submission"/>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/button_upload"
             android:layout_width="137dp"
-            android:layout_height="46dp"
             android:layout_below="@id/text_photo_submission"
-            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/upload_button"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginBottom="30dp"
-            android:onClick="uploadPhoto"
-            app:srcCompat="@drawable/upload_button" />
+            style="@style/button_style" />
+
+        <ImageView
+            android:id="@+id/button_cancel"
+            android:layout_width="116dp"
+            android:layout_below="@id/button_upload"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="130dp"
+            android:layout_alignRight="@id/button_fill"
+            app:srcCompat="@drawable/cancel_button"
+            style="@style/button_style"/>
+
+        <ImageView
+            android:id="@+id/button_fill"
+            android:layout_width="116dp"
+            android:layout_below="@id/button_upload"
+            android:layout_alignRight="@id/input_amount_completed"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/fill_button"
+            style="@style/button_style"/>
 
     </RelativeLayout>
 
