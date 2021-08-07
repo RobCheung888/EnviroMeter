@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         binding.bottomNav.setOnItemSelectedListener(bottomNavMethod);
-        getSupportFragmentManager().beginTransaction().replace(R.id.header_container, headerFragment).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.header_container, headerFragment).commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new HomeFragment()).commit();
     }
 
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 fragmentMain = new TasksFragment();
                 break;
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader).commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMain).commit();
         return true;
     };
