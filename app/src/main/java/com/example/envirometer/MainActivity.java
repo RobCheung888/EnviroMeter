@@ -1,8 +1,5 @@
 package com.example.envirometer;
 
-import android.app.Activity;
-import android.view.MenuItem;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +7,6 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 
 import com.example.envirometer.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         binding.bottomNav.setOnItemSelectedListener(bottomNavMethod);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.header_container, new HeaderFragment()).commit();
 
     }
 
@@ -37,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.home:
-                fragment = new HomeFragment();
+                fragment = new HeaderFragment();
                 break;
             case R.id.Tasks:
                 fragment = new TasksFragment();
                 break;
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragment).commit();
         return true;
     };
 }
