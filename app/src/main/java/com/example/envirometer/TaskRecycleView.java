@@ -1,18 +1,14 @@
 package com.example.envirometer;
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 
 public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHolder>
@@ -63,7 +59,7 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            txtGoal = itemView.findViewById(R.id.goalname);
+            txtGoal = itemView.findViewById(R.id.text_goals_title);
             parent = itemView.findViewById(R.id.parent);
             currentState = itemView.findViewById(R.id.completed);
             completeState = itemView.findViewById(R.id.target);

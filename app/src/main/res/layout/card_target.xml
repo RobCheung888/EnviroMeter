@@ -21,7 +21,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:textSize="35dp"
                 android:layout_marginTop="7dp"
-                android:id="@+id/goalname"/>
+                android:id="@+id/text_goals_title"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
                 android:id="@+id/status"
                 android:fontFamily="@font/roboto_medium"
                 android:textSize="20dp"
-                android:layout_below="@id/goalname"
+                android:layout_below="@id/text_goals_title"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="20dp"
@@ -42,7 +42,7 @@
                 android:layout_toRightOf="@id/status"
                 android:text="done"
                 android:textSize="20sp"
-                android:layout_below="@id/goalname"
+                android:layout_below="@id/text_goals_title"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginBottom="20dp"
@@ -55,7 +55,7 @@
                 android:layout_toRightOf="@id/completed"
                 android:text="/"
                 android:textSize="20sp"
-                android:layout_below="@id/goalname"
+                android:layout_below="@id/text_goals_title"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="20dp"
@@ -68,7 +68,7 @@
                 android:layout_toRightOf="@id/divider"
                 android:text="target"
                 android:textSize="20sp"
-                android:layout_below="@id/goalname"
+                android:layout_below="@id/text_goals_title"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="20dp"
