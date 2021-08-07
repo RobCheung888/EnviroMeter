@@ -1,14 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_grey"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp">
+
+        <ImageView
+            android:id="@+id/image_bottle"
+            android:layout_width="155dp"
+            android:layout_height="312dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/content_desc_bottle"
+            android:src="@drawable/image_bottle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_amount_filled_bg"
+            android:layout_width="318dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/white_backdrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_bottle" />
+
+        <TextView
+            android:id="@+id/text_amount_filled"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="int mL / int mL"
+            android:textStyle="bold"
+            android:textColor="@color/dark_blue"
+            android:gravity="center"
+            android:autoSizeMaxTextSize="23sp"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeStepGranularity="1sp"
+            android:autoSizeTextType="uniform"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/image_amount_filled_bg"
+            app:layout_constraintEnd_toEndOf="@+id/image_amount_filled_bg"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="@+id/image_amount_filled_bg"
+            app:layout_constraintTop_toTopOf="@+id/image_amount_filled_bg"
+            app:layout_constraintVertical_bias="0.434" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
