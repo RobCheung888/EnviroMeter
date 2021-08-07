@@ -1,50 +1,49 @@
 package com.example.envirometer;
 
+import android.app.Activity;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.fragment.app.Fragment;
+
+import com.example.envirometer.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView bottomNavigationView;
-    private final String TEST = "test";
+    private ActivityMainBinding binding;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set up data binding. Google best practice instead of findViewById()
         setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
-        bottomNavigationView = findViewById(R.id.bottomNav);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
+        binding.bottomNav.setOnItemSelectedListener(bottomNavMethod);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
-
 
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new BottomNavigationView.OnNavigationItemSelectedListener()
-    {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item)
-        {
-            Fragment fragment = null;
+    private NavigationBarView.OnItemSelectedListener bottomNavMethod = item -> {
+        Fragment fragment = null;
 
-            switch (item.getItemId())
-            {
-                case R.id.home:
-                    fragment = new HomeFragment();
-                    break;
-                case R.id.Tasks:
-                    fragment = new TargetFragment();
-                    break;
-            }
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
-            return true;
+        switch (item.getItemId()) {
+            case R.id.home:
+                fragment = new HomeFragment();
+                break;
+            case R.id.Tasks:
+                fragment = new TasksFragment();
+                break;
         }
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+        return true;
     };
 }

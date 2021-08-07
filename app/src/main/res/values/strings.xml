@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">EnviroMeter</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Bottom nav bar -->
+    <string name="icon_home">Home</string>
+    <string name="icon_tasks">Tasks</string>
+
+    <!-- Home fragment -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_level">Level</string>
+
 </resources>
