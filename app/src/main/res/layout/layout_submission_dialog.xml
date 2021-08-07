@@ -23,12 +23,12 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginTop="7dp"
-            android:id="@+id/text_goals_title"/>
+            android:id="@+id/goalname"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_goals_title"
+            android:layout_below="@id/goalname"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="30dp">
 

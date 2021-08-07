@@ -59,7 +59,7 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            txtGoal = itemView.findViewById(R.id.text_goals_title);
+            txtGoal = itemView.findViewById(R.id.goalname);
             parent = itemView.findViewById(R.id.parent);
             currentState = itemView.findViewById(R.id.completed);
             completeState = itemView.findViewById(R.id.target);
