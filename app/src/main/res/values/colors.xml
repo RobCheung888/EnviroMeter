@@ -13,4 +13,6 @@
     <color name="dark_blue">#4175F9</color>
     <color name="pale_blue">#AFC5FF</color>
     <color name="light_sky_blue">#ABD8FC</color>
+
+    <color name="edit_text_bg">#EBECF0</color>
 </resources>
