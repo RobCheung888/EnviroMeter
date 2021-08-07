@@ -26,7 +26,7 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
     @Override
     public TaskRecycleView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_tasks,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_target,parent,false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -40,9 +40,9 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
     @Override
     public void onBindViewHolder(@NonNull TaskRecycleView.ViewHolder holder, int position)
     {
-        holder.txtGoal.setText(goal.get(position).getGoal());
-        holder.currentState.setText(goal.get(position).getCurrentState());
-        holder.completeState.setText(goal.get(position).getCompleteState());
+          holder.txtGoal.setText(goal.get(position).getGoal());
+          holder.currentState.setText(goal.get(position).getCurrentState());
+          holder.completeState.setText(goal.get(position).getCompleteState());
     }
 
     @Override
