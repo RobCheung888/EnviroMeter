@@ -35,25 +35,25 @@
             app:layout_constraintTop_toBottomOf="@+id/image_bottle" />
 
         <TextView
-            android:id="@+id/text_amount_filled"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto"
-            android:text="int mL / int mL"
-            android:textStyle="bold"
-            android:textColor="@color/dark_blue"
-            android:gravity="center"
-            android:autoSizeMaxTextSize="23sp"
-            android:autoSizeMinTextSize="10sp"
-            android:autoSizeStepGranularity="1sp"
-            android:autoSizeTextType="uniform"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/image_amount_filled_bg"
-            app:layout_constraintEnd_toEndOf="@+id/image_amount_filled_bg"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="@+id/image_amount_filled_bg"
-            app:layout_constraintTop_toTopOf="@+id/image_amount_filled_bg"
-            app:layout_constraintVertical_bias="0.434" />
+                android:id="@+id/text_amount_filled"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:text="int mL / int mL"
+                android:textStyle="bold"
+                android:textColor="@color/dark_blue"
+                android:gravity="center"
+                android:autoSizeMaxTextSize="23sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeStepGranularity="1sp"
+                android:autoSizeTextType="uniform"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/image_amount_filled_bg"
+                app:layout_constraintEnd_toEndOf="@+id/image_amount_filled_bg"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="@+id/image_amount_filled_bg"
+                app:layout_constraintTop_toTopOf="@+id/image_amount_filled_bg"
+                app:layout_constraintVertical_bias="0.434"
+                android:fontFamily="@font/roboto_medium"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
