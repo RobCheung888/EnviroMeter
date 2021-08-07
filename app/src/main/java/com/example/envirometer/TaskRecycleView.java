@@ -1,15 +1,14 @@
 package com.example.envirometer;
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 
 public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHolder>
@@ -27,9 +26,15 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
     @Override
     public TaskRecycleView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_target,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_tasks,parent,false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
+    }
+
+    public void setGoal(ArrayList<Target> goals)
+    {
+        this.goal = goals;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -46,12 +51,6 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
         return goal.size();
     }
 
-    public void setGoal(ArrayList<Target> goals)
-    {
-        this.goal = goals;
-        notifyDataSetChanged();
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView txtGoal;
         private CardView parent;
@@ -65,7 +64,5 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
             currentState = itemView.findViewById(R.id.completed);
             completeState = itemView.findViewById(R.id.target);
         }
-
-
     }
 }

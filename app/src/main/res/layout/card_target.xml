@@ -6,16 +6,16 @@
                                    android:padding="10dp"
                                    android:id="@+id/parent"
                                    app:cardElevation="20dp"
-                                   app:cardCornerRadius="40dp"
+                                   app:cardCornerRadius="20dp"
                                    android:layout_margin="10dp">
     <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/dark_blue"
+            android:background="@color/white"
             >
 
         <TextView
-                android:paddingStart="20dp"
+                android:paddingStart="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Goals"
@@ -23,7 +23,7 @@
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/roboto_medium"
                 android:textSize="35dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="15dp"
                 android:id="@+id/goalname"/>
 
         <TextView
@@ -35,7 +35,7 @@
                 android:textSize="20dp"
                 android:layout_below="@id/goalname"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginBottom="20dp"
                 />
 
@@ -84,6 +84,7 @@
                 android:layout_toRightOf="@id/target"
                 android:text="100 mL"
                 android:textSize="20sp"
+                android:textColor="@color/dark_blue"
                 android:layout_below="@id/goalname"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="60dp"
