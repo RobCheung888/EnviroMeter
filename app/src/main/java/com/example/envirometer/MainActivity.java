@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity
 {
 
     private BottomNavigationView bottomNavigationView;
-    private final String TEST = "test";
+    private final String TEST = "Hello";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
