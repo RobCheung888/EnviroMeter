@@ -3,10 +3,10 @@ package com.example.envirometer;
 public class Target
 {
     private String goal;
-    private int currentState;
-    private int completeState;
+    private String currentState;
+    private String completeState;
 
-    public Target(String goal, int currentState, int completeState)
+    public Target(String goal, String  currentState, String completeState)
     {
         this.goal = goal;
         this.currentState = currentState;
@@ -23,22 +23,22 @@ public class Target
         this.goal = goal;
     }
 
-    public int getCurrentState()
+    public String getCurrentState()
     {
         return currentState;
     }
 
-    public void setCurrentState(int currentState)
+    public void setCurrentState(String currentState)
     {
         this.currentState = currentState;
     }
 
-    public int getCompleteState()
+    public String getCompleteState()
     {
         return completeState;
     }
 
-    public void setCompleteState(int completeState)
+    public void setCompleteState(String completeState)
     {
         this.completeState = completeState;
     }

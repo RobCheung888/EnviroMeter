@@ -19,19 +19,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView goalRecView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-
-        goalRecView = findViewById(R.id.goalRecyclerView);
-        ArrayList<Target> targets = new ArrayList<>();
-        targets.add(new Target("Turn off AC", 12,30));
-
-        TaskRecycleView adapter = new TaskRecycleView(this);
-        adapter.setGoal(targets);
-
-        goalRecView.setAdapter(adapter);
-        goalRecView.setLayoutManager(new LinearLayoutManager(this));
-
 
         // Set up data binding. Google best practice instead of findViewById()
         setContentView(R.layout.activity_main);
