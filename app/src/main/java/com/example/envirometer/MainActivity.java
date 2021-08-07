@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity
 {
 
     private BottomNavigationView bottomNavigationView;
+    private final String TEST = "test";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity
                 case R.id.home:
                     fragment = new HomeFragment();
                     break;
-                case R.id.target:
+                case R.id.Tasks:
                     fragment = new TargetFragment();
                     break;
             }
