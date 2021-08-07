@@ -1,9 +1,15 @@
 package com.example.envirometer;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,21 +19,33 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE =
+            "com.example.android.environmeter.extra.MESSAGE";
+    public static final int EXTRA_REQUEST_CODE = 1;
+
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private ActivityMainBinding binding;
     private Fragment headerFragment = new HeaderHomeFragment();
     private RecyclerView goalRecView;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
         // Set up data binding. Google best practice instead of findViewById()
-        setContentView(R.layout.activity_main);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        // Retrieve Permissions from user to access gallery
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            Log.d(LOG_TAG, "Permission is granted");
+        } else {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        }
 
         binding.bottomNav.setOnItemSelectedListener(bottomNavMethod);
         getSupportFragmentManager().beginTransaction().replace(R.id.header_container, headerFragment).commit();

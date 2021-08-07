@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp"
+    android:padding="20dp"
     android:id="@+id/parent"
     app:cardElevation="20dp"
     app:cardCornerRadius="10dp"
@@ -13,19 +13,19 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:paddingStart="20dp"
+            android:id="@+id/text_goal_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Goal"
             android:layout_centerHorizontal="true"
-            android:gravity="start"
-            android:fontFamily="@font/roboto_medium"
-            android:textSize="35dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="30dp"
-            android:id="@+id/text_goal_title"/>
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="start"
+            android:paddingStart="20dp"
+            android:text="Goal"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dialog_text_size"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_drop_down_one"
@@ -35,8 +35,7 @@
             android:layout_below="@id/text_goal_title"
             android:layout_marginStart="40dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="30dp">
+            android:layout_marginEnd="40dp">
 
             <AutoCompleteTextView
                 android:id="@+id/dropdown_goals_option"
@@ -56,11 +55,11 @@
             android:layout_centerHorizontal="true"
             android:gravity="start"
             android:fontFamily="@font/roboto_medium"
-            android:textSize="35dp"
+            android:textSize="@dimen/dialog_text_size"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_below="@id/layout_drop_down_one"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/header_margin_top"
             android:layout_marginStart="30dp"
             android:id="@+id/amount_completed"/>
 
@@ -73,7 +72,6 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginBottom="30dp"
             android:hint="Number of hours"
             android:paddingLeft="20dp"
             android:ems="10"
@@ -87,11 +85,11 @@
             android:layout_centerHorizontal="true"
             android:gravity="start"
             android:fontFamily="@font/roboto_medium"
-            android:textSize="35dp"
+            android:textSize="@dimen/dialog_text_size"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_below="@id/input_amount_completed"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/header_margin_top"
             android:layout_marginStart="30dp"
             android:id="@+id/text_photo_submission"/>
 
@@ -99,9 +97,11 @@
             android:id="@+id/button_upload"
             android:layout_width="137dp"
             android:layout_below="@id/text_photo_submission"
+            android:layout_alignLeft="@id/input_amount_completed"
             app:srcCompat="@drawable/upload_button"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="40dp"
+            android:layout_marginStart="0dp"
             style="@style/button_style" />
 
         <ImageView
@@ -111,6 +111,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="130dp"
             android:layout_alignRight="@id/button_fill"
+            android:layout_marginBottom="35dp"
             app:srcCompat="@drawable/cancel_button"
             style="@style/button_style"/>
 
