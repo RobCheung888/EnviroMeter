@@ -54,9 +54,9 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
     @Override
     public void onBindViewHolder(@NonNull TaskRecycleView.ViewHolder holder, int position)
     {
-        holder.txtGoal.setText(goal.get(position).getGoal());
-        holder.currentState.setText(goal.get(position).getCurrentState());
-        holder.completeState.setText(goal.get(position).getCompleteState());
+          holder.txtGoal.setText(goal.get(position).getGoal());
+          holder.currentState.setText(goal.get(position).getCurrentState());
+          holder.completeState.setText(goal.get(position).getCompleteState());
     }
 
     @Override

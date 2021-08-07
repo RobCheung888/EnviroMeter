@@ -52,4 +52,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMain).commit();
         return true;
     };
+
+    public void openSubmissionDialog(View view) {
+        SubmissionDialog submissionDialog = new SubmissionDialog();
+        submissionDialog.show(getSupportFragmentManager(), "Submission Dialog");
+    }
 }

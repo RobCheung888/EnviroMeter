@@ -120,6 +120,7 @@
             android:layout_below="@id/button_upload"
             android:layout_alignRight="@id/input_amount_completed"
             android:layout_marginTop="10dp"
+            android:onClick="fillWater"
             app:srcCompat="@drawable/fill_button"
             style="@style/button_style"/>
 

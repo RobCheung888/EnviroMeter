@@ -48,6 +48,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:elevation="70dp"
                 android:backgroundTint="@color/dark_blue"
+                android:onClick="openSubmissionDialog"
                 app:tint="@color/white"
                 app:srcCompat="@drawable/ic_plus"
                 app:layout_constraintBottom_toBottomOf="parent"
