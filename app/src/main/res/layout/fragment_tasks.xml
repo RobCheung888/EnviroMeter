@@ -5,11 +5,13 @@
              android:layout_height="match_parent"
              tools:context=".TasksFragment">
 
+    <
+
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_height="match_parent"
-            android:id="@+id/contactRecView"/>
+            android:id="@+id/goalRecyclerView"/>
 
 
 </RelativeLayout>

@@ -5,17 +5,33 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.envirometer.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private Fragment headerFragment = new HeaderHomeFragment();
+    private RecyclerView goalRecView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        goalRecView = findViewById(R.id.goalRecyclerView);
+        ArrayList<Target> targets = new ArrayList<>();
+        targets.add(new Target("Turn off AC", 12,30));
+
+        TaskRecycleView adapter = new TaskRecycleView(this);
+        adapter.setGoal(targets);
+
+        goalRecView.setAdapter(adapter);
+        goalRecView.setLayoutManager(new LinearLayoutManager(this));
+
 
         // Set up data binding. Google best practice instead of findViewById()
         setContentView(R.layout.activity_main);

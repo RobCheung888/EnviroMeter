@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                    android:layout_width="wrap_content"
                                    android:layout_height="wrap_content"
                                    xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,10 +7,7 @@
                                    android:id="@+id/parent"
                                    app:cardElevation="20dp"
                                    app:cardCornerRadius="10dp"
-                                   android:layout_margin="10dp"
-                                   app:strokeColor="@color/teal_200"
-                                   app:strokeWidth="30dp"
-        >
+                                   android:layout_margin="10dp">
     <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -29,7 +26,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status"
+                android:text="Status: "
                 android:id="@+id/status"
                 android:fontFamily="@font/roboto_medium"
                 android:textSize="20dp"
@@ -43,14 +40,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/status"
-                android:text="10/30 hours"
-                android:textSize="20dp"
+                android:text="done"
+                android:textSize="20sp"
                 android:layout_below="@id/goalname"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:id="@+id/completed"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/completed"
+                android:text="/"
+                android:textSize="20sp"
+                android:layout_below="@id/goalname"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/divider"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/divider"
+                android:text="target"
+                android:textSize="20sp"
+                android:layout_below="@id/goalname"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/target"
+                />
 
     </RelativeLayout>
 
-
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
