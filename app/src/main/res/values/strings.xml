@@ -12,5 +12,6 @@
     <!-- Home fragment -->
     <string name="content_desc_bottle">Image of bottle</string>
     <string name="text_slash"> / </string>
+    <string name="text_goals">Goals</string>
 
 </resources>

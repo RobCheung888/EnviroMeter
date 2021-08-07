@@ -12,7 +12,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private Fragment headerFragment = new HeaderFragment();
+    private Fragment headerFragment = new HeaderHomeFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +30,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private NavigationBarView.OnItemSelectedListener bottomNavMethod = item -> {
-        Fragment fragment = null;
+        Fragment fragmentHeader = null;
+        Fragment fragmentMain = null;
 
         switch (item.getItemId()) {
             case R.id.home:
-                fragment = new HomeFragment();
-                getSupportFragmentManager().beginTransaction().replace(R.id.header_container, headerFragment).commit();
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
-                return true;
+                fragmentHeader = new HeaderHomeFragment();
+                fragmentMain = new HomeFragment();
+                break;
             case R.id.Tasks:
-                fragment = new TasksFragment();
+                fragmentHeader = new HeaderTasksFragment();
+                fragmentMain = new TasksFragment();
                 break;
         }
-        getSupportFragmentManager().beginTransaction().remove(headerFragment).commit();
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMain).commit();
         return true;
     };
 }
