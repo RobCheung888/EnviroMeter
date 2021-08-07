@@ -21,12 +21,26 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
         this.context = context;
     }
 
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        private TextView txtGoal;
+        private CardView parent;
+        private TextView currentState, completeState;
+
+        public ViewHolder(@NonNull View itemView)
+        {
+            super(itemView);
+            txtGoal = itemView.findViewById(R.id.goalname);
+            parent = itemView.findViewById(R.id.parent);
+            currentState = itemView.findViewById(R.id.completed);
+            completeState = itemView.findViewById(R.id.target);
+        }
+    }
 
     @NonNull
     @Override
     public TaskRecycleView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_tasks,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_target,parent,false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -51,18 +65,5 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
         return goal.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView txtGoal;
-        private CardView parent;
-        private TextView currentState, completeState;
 
-        public ViewHolder(@NonNull View itemView)
-        {
-            super(itemView);
-            txtGoal = itemView.findViewById(R.id.goalname);
-            parent = itemView.findViewById(R.id.parent);
-            currentState = itemView.findViewById(R.id.completed);
-            completeState = itemView.findViewById(R.id.target);
-        }
-    }
 }
