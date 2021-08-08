@@ -2,6 +2,7 @@ package com.example.envirometer.main_fragments;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
@@ -9,11 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.envirometer.MainActivity;
 import com.example.envirometer.R;
 import com.example.envirometer.data.DataTargets;
+import com.example.envirometer.data.GetDataTargets;
 
 public class HomeFragment extends Fragment {
-    private TextView amountFilled;
+    private static final String LOG_TAG = HomeFragment.class.getSimpleName();
+    private static final int amountCompleted;
+
+    private TextView volume;
     private int levelOne = 670;
 
     @Override
@@ -21,14 +27,32 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        amountFilled = view.findViewById(R.id.text_amount_filled);
-
-        DataTargets goals = new DataTargets();
-        TextView volume = view.findViewById(R.id.text_amount_filled);
+        volume = view.findViewById(R.id.text_amount_filled);
         volume.setText(currentLevel() + "mL" + " / " + levelOne + "mL");
 
         return view;
 
+    }
+
+    public void fillUpAmountIfComplete(String taskName, int amountCompleted, int index) {
+        // Find total amount needed to complete task
+        int totalAmount = Integer.valueOf(GetDataTargets.getDataTargets().getTasks().get(index).getCompleteState());
+
+        if (!isTaskComplete(amountCompleted, totalAmount)) return;
+
+        Log.d(LOG_TAG, String.valueOf(amountCompleted));
+        volume.setText(amountCompleted + "mL" + " / " + levelOne + "mL");
+    }
+
+    private boolean isTaskComplete(int amountCompleted, int totalAmount) {
+        if (amountCompleted >= totalAmount) {
+            Log.d(LOG_TAG, "Full");
+            return true;
+        }
+        else {
+            Log.d(LOG_TAG, "Not full");
+            return false;
+        }
     }
 
     public int currentLevel()
@@ -37,8 +61,13 @@ public class HomeFragment extends Fragment {
         return 0;
     }
 
-    public int updateAmountFilledLevel(int amountToAdd) {
+    public int getCurrentLevel()
+    {
+        return 0;
+    }
 
+    public int updateAmountFilledLevel(int amountToAdd) {
+        return 0;
     }
 
 }

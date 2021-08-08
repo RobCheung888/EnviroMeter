@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.envirometer.MainActivity;
 import com.example.envirometer.R;
+import com.example.envirometer.data.GetDataTargets;
 import com.example.envirometer.data.TaskRecycleView;
 import com.example.envirometer.data.DataTargets;
 
@@ -26,7 +27,6 @@ public class TasksFragment extends Fragment {
     private static final String BUNDLE_TAG_AMOUNT_FILLED = "BUNDLE_TAG_AMOUNT_FILLED";
     private static final String BUNDLE_TAG_INDEX = "BUNDLE_TAG_INDEX";
 
-    private DataTargets dataTargets = new DataTargets();
     private Context context = getContext();
     private TaskRecycleView adapter;
 
@@ -43,21 +43,11 @@ public class TasksFragment extends Fragment {
 
         // Set card views
         adapter = new TaskRecycleView(this.getContext());
-        adapter.setGoal(dataTargets.getTasks());
+        adapter.setGoal(GetDataTargets.getDataTargets().getTasks());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(adapter);
 
         return view;
-    }
-
-    public void updateCurrentState(String taskName, int amountFilled, int index) {
-        Log.d(LOG_TAG, "Change current state");
-        adapter.setCurrentState(dataTargets.getTasks(), index, amountFilled);
-    }
-
-    // Getter so all fragments and activities can access same data set
-    public DataTargets getDataTargets() {
-        return dataTargets;
     }
 }

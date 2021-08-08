@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.envirometer.R;
+import com.example.envirometer.data.DataTargets;
+import com.example.envirometer.data.GetDataTargets;
 import com.example.envirometer.databinding.ActivityMainBinding;
 import com.example.envirometer.header_fragments.HeaderHomeFragment;
 import com.example.envirometer.header_fragments.HeaderTasksFragment;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
     private Fragment fragmentHeader = null;
     private Fragment fragmentMain = null;
     private Fragment fragmentMainTasks = new TasksFragment();
+    private Fragment fragmentMainHome = new HomeFragment();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
 
         binding.bottomNav.setOnItemSelectedListener(bottomNavMethod);
         getSupportFragmentManager().beginTransaction().replace(R.id.header_container, new HeaderHomeFragment()).commit();
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMainHome).commit();
     }
 
     private NavigationBarView.OnItemSelectedListener bottomNavMethod = item -> {
@@ -67,15 +70,15 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
                 fragmentHeader = new HeaderHomeFragment();
                 fragmentMain = new HomeFragment();
                 tag = TAG_HOME;
-                getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader, tag).commit();
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMain, tag).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMainHome, tag).commit();
                 break;
             case R.id.Tasks:
                 fragmentHeader = new HeaderTasksFragment();
                 fragmentMain = new TasksFragment();
                 tag = TAG_TASKS;
-                getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader, tag).commit();
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMainTasks, tag).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMain, tag).commit();
                 break;
         }
 /*        getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader, tag).commit();
@@ -97,16 +100,16 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
     @Override
     public void applySubmission(String taskName, int amountCompleted, int index) {
         Log.d(LOG_TAG, "Apply submission main");
+        int currentState = Integer.valueOf(GetDataTargets.getDataTargets().getTasks().get(index).getCurrentState());
+
+        GetDataTargets.getDataTargets().getTasks().get(index).setCurrentState(String.valueOf(amountCompleted + currentState));
+
         // Update millilitres count
-
-
-        // Update current state
-        if (getSupportFragmentManager().findFragmentByTag(TAG_TASKS) == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMainTasks, TAG_TASKS).commit();
+        if (tag.equalsIgnoreCase(TAG_HOME)) {
+            HomeFragment homeFragment = (HomeFragment) getSupportFragmentManager().findFragmentByTag(TAG_HOME);
+            homeFragment.fillUpAmountIfComplete(taskName, amountCompleted, index);
         }
-        else {
-            TasksFragment tasksFragment = (TasksFragment) getSupportFragmentManager().findFragmentByTag(TAG_TASKS);
-            tasksFragment.updateCurrentState(taskName, amountCompleted, index);
-        }
+        else Log.d(LOG_TAG, "Not on home screen");
+
     }
 }
