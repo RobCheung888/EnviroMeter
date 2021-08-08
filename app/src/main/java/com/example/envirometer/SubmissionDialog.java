@@ -18,6 +18,11 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.core.app.ActivityCompat;
 
 import com.example.envirometer.standalone.Utility;
+import com.example.envirometer.storage.DataTargets;
+import com.example.envirometer.storage.Task;
+
+import java.lang.annotation.Target;
+import java.util.ArrayList;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
@@ -30,10 +35,9 @@ public class SubmissionDialog extends AppCompatDialogFragment {
     private EditText amountCompletedEditText;
     private AutoCompleteTextView dropDownSelectGoal;
 
-    private static final String[] goals = new String[]{
+    private static final String[] goals = new String[] {
       "Turn off AC", "Go bike-riding", "Clean up litter","Take public transit", "Open windows", "Turn off lights"
     };
-
 
     @NonNull
     @Override
@@ -53,7 +57,12 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         amountCompletedEditText = view.findViewById(R.id.input_amount_completed);
         AutoCompleteTextView goal = view.findViewById(R.id.dropdown_goals_option);
 
-        //Set upload button to visible and uploaded to invisible
+        // Create drop-down menu
+        //TODO: Create single dropdown item
+        ArrayList<String> tasks = populateArrayWithTasks();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, [], tasks)
+
+        // Set upload button to visible and uploaded to invisible
         uploadImageButton.setVisibility(View.VISIBLE);
         uploadedImageButton.setVisibility(View.INVISIBLE);
 
@@ -78,6 +87,19 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         });
 
         return builder.create();
+    }
+
+    // Populate Array with tasks from database
+    private ArrayList<String> populateArrayWithTasks() {
+        ArrayList<String> taskItems = new ArrayList<String>();
+        ArrayList<Task> allTasks = DataTargets.getTasks();
+        
+        int sizeOfArray = allTasks.size();
+        for (int i = 0; i < sizeOfArray; i++) {
+            taskItems.add(allTasks.get(i).toString());
+        }
+        
+        return taskItems;
     }
 
     public interface SubmissionDialogListener {
