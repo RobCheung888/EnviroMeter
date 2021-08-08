@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 
 public class TasksFragment extends Fragment {
+    private DataTargets dataTargets = new DataTargets();
+
     @Nullable
 
     @Override
@@ -26,7 +28,7 @@ public class TasksFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.goalRecyclerView);
 
         TaskRecycleView adapter = new TaskRecycleView(this.getContext());
-        adapter.setGoal(DataTargets.getTasks());
+        adapter.setGoal(dataTargets.getTasks());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(adapter);
