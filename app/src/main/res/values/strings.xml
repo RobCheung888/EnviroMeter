@@ -14,13 +14,7 @@
     <string name="text_slash"> / </string>
     <string name="text_goals">Goals</string>
     >
-    <string-array name="Goals">
-        <item>Turn off AC</item>
-        <item>Go bike-riding</item>
-        <item>Clean up litter</item>
-        <item>Take public transit</item>
-        <item>Open windows</item>
-        <item>Turn off lights</item>
-    </string-array>
+
+    <string name="text_first_task">Choose tasks</string>
 
 </resources>

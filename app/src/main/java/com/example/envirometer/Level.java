@@ -4,11 +4,13 @@ public class Level
 {
     private int level;
     private int waterLevel;
+    private boolean isFilled;
 
     public Level(int level, int waterLevel)
     {
         this.level = level;
         this.waterLevel = waterLevel;
+
     }
 
     public int getLevel()
