@@ -16,7 +16,7 @@ import com.example.envirometer.standalone.Utility;
 
 public class HomeFragment extends Fragment {
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
-    private static int amountCompleted = 0;
+    private static int totalPointsWorth = 0;
 
     private TextView volume;
     private int levelOne = 670;
@@ -27,7 +27,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         volume = view.findViewById(R.id.text_amount_filled);
-        volume.setText(amountCompleted + "mL" + " / " + levelOne + "mL");
+        volume.setText(totalPointsWorth + "mL" + " / " + levelOne + "mL");
 
         return view;
 
@@ -36,12 +36,13 @@ public class HomeFragment extends Fragment {
     public void fillUpAmountIfComplete(String taskName, int amountCompleted, int index) {
         // Find total amount needed to complete task
         int totalAmount = Integer.valueOf(GetDataTargets.getDataTargets().getTasks().get(index).getCompleteState());
+        int pointsWorth = GetDataTargets.getDataTargets().getTasks().get(index).getPointsWorth();
 
         if (!isTaskComplete(amountCompleted, totalAmount)) return;
 
-        Log.d(LOG_TAG, String.valueOf(amountCompleted));
-        setCompletedAmount(amountCompleted);
-        volume.setText(amountCompleted + "mL" + " / " + levelOne + "mL");
+        Log.d(LOG_TAG, String.valueOf(pointsWorth));
+        setCompletedAmount(pointsWorth);
+        volume.setText(totalPointsWorth + "mL" + " / " + levelOne + "mL");
     }
 
     private boolean isTaskComplete(int amountCompleted, int totalAmount) {
@@ -62,9 +63,9 @@ public class HomeFragment extends Fragment {
         return 0;
     }
 
-    public static int setCompletedAmount(int amountCompletedFinal)
+    public static int setCompletedAmount(int pointsWorth)
     {
-        amountCompleted = amountCompletedFinal;
+        totalPointsWorth += pointsWorth;
         return 0;
     }
 
