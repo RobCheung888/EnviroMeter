@@ -1,16 +1,18 @@
-package com.example.envirometer;
+package com.example.envirometer.storage;
 
-public class Target
+public class Task
 {
     private String goal;
     private String currentState;
     private String completeState;
+    private int pointsWorth;
 
-    public Target(String goal, String  currentState, String completeState)
+    public Task(String goal, String  currentState, String completeState, int pointsWorth)
     {
         this.goal = goal;
         this.currentState = currentState;
         this.completeState = completeState;
+        this.pointsWorth = pointsWorth;
     }
 
     public String getGoal()
@@ -43,6 +45,14 @@ public class Target
         this.completeState = completeState;
     }
 
+    public int getPointsWorth() {
+        return pointsWorth;
+    }
+
+    public void setPointsWorth(int pointsWorth) {
+        this.pointsWorth = pointsWorth;
+    }
+
     @Override
     public String toString()
     {
@@ -50,6 +60,7 @@ public class Target
                 "goal='" + goal + '\'' +
                 ", currentState=" + currentState +
                 ", completeState=" + completeState +
+                ", pointsWorth=" + pointsWorth +
                 '}';
     }
 }
