@@ -43,6 +43,8 @@ public class HomeFragment extends Fragment {
     public void fillUpAmountIfComplete(String taskName, int amountCompleted, int index) {
         // Find total amount needed to complete task
         int totalAmount = Integer.valueOf(GetDataTargets.getDataTargets().getTasks().get(index).getCompleteState());
+        amountCompleted += Integer.valueOf(GetDataTargets.getDataTargets().getTasks().get(index).getCurrentState());
+
         int pointsWorth = GetDataTargets.getDataTargets().getTasks().get(index).getPointsWorth();
 
         if (!isTaskComplete(amountCompleted, totalAmount)) return;

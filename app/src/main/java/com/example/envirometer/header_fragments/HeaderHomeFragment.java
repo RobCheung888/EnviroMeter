@@ -33,6 +33,7 @@ public class HeaderHomeFragment extends Fragment {
         // Find total amount needed to complete task
         int totalAmount = Integer.valueOf(GetDataTargets.getDataTargets().getTasks().get(index).getCompleteState());
         int pointsWorth = GetDataTargets.getDataTargets().getTasks().get(index).getPointsWorth();
+        amountCompleted += Integer.valueOf(GetDataTargets.getDataTargets().getTasks().get(index).getCurrentState());
 
         if (!isTaskComplete(amountCompleted, totalAmount)) return;
 
