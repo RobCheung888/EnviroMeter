@@ -84,7 +84,9 @@ public class SubmissionDialog extends AppCompatDialogFragment {
                 int amountCompleted = Integer.valueOf(amountCompletedEditText.getText().toString());
                 Log.d(LOG_TAG, "Amount completed: " + amountCompleted);
 
-//                String taskName = goalsAutoCompleteTextView.
+                String taskName = goalsAutoCompleteTextView.getText().toString();
+                Log.d(LOG_TAG, "Task completed: " + taskName);
+
                 listener.applySubmission(taskName, amountCompleted);
                 getDialog().dismiss();
             } catch(NumberFormatException ex) {
