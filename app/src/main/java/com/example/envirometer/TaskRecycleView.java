@@ -9,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.envirometer.storage.Task;
+
 import java.util.ArrayList;
 
 public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHolder>
 {
-    private ArrayList<Target> goal = new ArrayList<>();
+    private ArrayList<Task> goal = new ArrayList<>();
     private Context context;
 
     public TaskRecycleView(Context context)
@@ -24,7 +26,7 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView txtGoal;
         private CardView parent;
-        private TextView currentState, completeState;
+        private TextView currentState, completeState, amountWorth;
 
         public ViewHolder(@NonNull View itemView)
         {
@@ -33,6 +35,7 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
             parent = itemView.findViewById(R.id.parent);
             currentState = itemView.findViewById(R.id.completed);
             completeState = itemView.findViewById(R.id.target);
+            amountWorth = itemView.findViewById(R.id.size);
         }
     }
 
@@ -45,7 +48,7 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
         return holder;
     }
 
-    public void setGoal(ArrayList<Target> goals)
+    public void setGoal(ArrayList<Task> goals)
     {
         this.goal = goals;
         notifyDataSetChanged();
@@ -57,6 +60,7 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
           holder.txtGoal.setText(goal.get(position).getGoal());
           holder.currentState.setText(goal.get(position).getCurrentState());
           holder.completeState.setText(goal.get(position).getCompleteState());
+          holder.amountWorth.setText(goal.get(position).getPointsWorth() + " mL");
     }
 
     @Override

@@ -95,6 +95,7 @@
 
         <ImageView
             android:id="@+id/button_upload"
+            android:visibility="visible"
             android:layout_width="137dp"
             android:layout_below="@id/text_photo_submission"
             android:layout_alignLeft="@id/input_amount_completed"
@@ -103,6 +104,18 @@
             android:layout_marginEnd="40dp"
             android:layout_marginStart="0dp"
             style="@style/button_style" />
+
+        <ImageView
+            android:id="@+id/button_uploaded"
+            android:visibility="invisible"
+            android:layout_width="140dp"
+            android:layout_below="@id/text_photo_submission"
+            android:layout_alignLeft="@id/input_amount_completed"
+            app:srcCompat="@drawable/upload_button_disabled"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="0dp"
+            style="@style/button_style"/>
 
         <ImageView
             android:id="@+id/button_cancel"

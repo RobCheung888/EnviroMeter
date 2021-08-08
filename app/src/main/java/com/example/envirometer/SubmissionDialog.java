@@ -7,12 +7,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,6 +20,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.core.app.ActivityCompat;
 
+import com.example.envirometer.standalone.Utility;
+
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
 public class SubmissionDialog extends AppCompatDialogFragment {
@@ -29,7 +29,7 @@ public class SubmissionDialog extends AppCompatDialogFragment {
     private static final int IMAGE_PICK_CODE = 2;
     private static final int IMAGE_REQUEST_CODE = 1;
 
-    private ImageView cancelButton, uploadImageButton, fillButton;
+    private ImageView cancelButton, uploadImageButton, fillButton, uploadedImageButton;
     private EditText amountCompletedEditText;
     private AutoCompleteTextView dropDownSelectGoal;
 
@@ -43,13 +43,18 @@ public class SubmissionDialog extends AppCompatDialogFragment {
 
         builder.setView(view);
 
+        // Attach fields to layout widgets
         uploadImageButton = view.findViewById(R.id.button_upload);
+        uploadedImageButton = view.findViewById(R.id.button_uploaded);
         cancelButton = view.findViewById(R.id.button_cancel);
         fillButton = view.findViewById(R.id.button_fill);
         amountCompletedEditText = view.findViewById(R.id.input_amount_completed);
 
+        //Set upload button to visible and uploaded to invisible
+        uploadImageButton.setVisibility(View.VISIBLE);
+        uploadedImageButton.setVisibility(View.INVISIBLE);
+
         uploadImageButton.setOnClickListener((View.OnClickListener) v -> {
-            //TODO: Write code to upload image
             pickImage();
         });
 
@@ -59,8 +64,12 @@ public class SubmissionDialog extends AppCompatDialogFragment {
             //TODO: Write code to add water
 
             //Collect data from user input and adjust other values accordingly
-            int amountCompleted = Integer.valueOf(amountCompletedEditText.getText().toString());
-            Log.d(LOG_TAG, "Amount completed: " + amountCompleted);
+            try {
+                int amountCompleted = Integer.valueOf(amountCompletedEditText.getText().toString());
+                Log.d(LOG_TAG, "Amount completed: " + amountCompleted);
+            } catch(NumberFormatException ex) {
+                Utility.displayToast(getContext(), "Cannot register submission amount");
+            }
 
             getDialog().dismiss();
         });
@@ -104,7 +113,10 @@ public class SubmissionDialog extends AppCompatDialogFragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_REQUEST_CODE) {
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+            //Set uploaded button to visible and upload to invisible
+            uploadImageButton.setVisibility(View.INVISIBLE);
+            uploadedImageButton.setVisibility(View.VISIBLE);
             return;
         }
     }
