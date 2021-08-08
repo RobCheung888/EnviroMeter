@@ -3,6 +3,7 @@ package com.example.envirometer.main_fragments;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 

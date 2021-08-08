@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private static final String TAG_HOME = "HOME_TAG";
+    private static final String TAG_HEADER = "HEADER_TAG";
     private static final String TAG_TASKS = "TAG TASKS";
     private String tag = TAG_HOME;
 
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
     private Fragment fragmentMain = null;
     private Fragment fragmentMainTasks = new TasksFragment();
     private Fragment fragmentMainHome = new HomeFragment();
+    private Fragment fragmentHeaderHome = new HeaderHomeFragment();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
         }
 
         binding.bottomNav.setOnItemSelectedListener(bottomNavMethod);
-        getSupportFragmentManager().beginTransaction().replace(R.id.header_container, new HeaderHomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeaderHome, TAG_HEADER).commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMainHome, tag).commit();
     }
 
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
                 fragmentHeader = new HeaderHomeFragment();
                 fragmentMain = new HomeFragment();
                 tag = TAG_HOME;
-                getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeaderHome, TAG_HEADER).commit();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMainHome, tag).commit();
                 break;
             case R.id.Tasks:
@@ -109,6 +111,14 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
             HomeFragment homeFragment = (HomeFragment) getSupportFragmentManager().findFragmentByTag(TAG_HOME);
             homeFragment.fillUpAmountIfComplete(taskName, amountCompleted, index);
         }
+
+        // Update progress bar
+        // Update millilitres count
+        if (TAG_HEADER == TAG_HEADER) {
+            HeaderHomeFragment headerHomeFragment = (HeaderHomeFragment) getSupportFragmentManager().findFragmentByTag(TAG_HEADER);
+            headerHomeFragment.fillUpAmountIfComplete(taskName, amountCompleted, index);
+        }
+
         else Log.d(LOG_TAG, "Not on home screen");
 
     }

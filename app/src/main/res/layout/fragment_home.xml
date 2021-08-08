@@ -15,7 +15,7 @@
         <me.itangqi.waveloadingview.WaveLoadingView
             android:id="@+id/waveLoadingView"
             android:layout_width="410dp"
-            android:layout_height="327dp"
+            android:layout_height="450dp"
             app:layout_constraintBottom_toBottomOf="@+id/image_amount_filled_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
