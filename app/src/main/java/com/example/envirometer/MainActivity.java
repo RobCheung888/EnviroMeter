@@ -30,9 +30,14 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
     public static final int EXTRA_REQUEST_CODE = 1;
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
+    private static final String TAG_HOME = "HOME_TAG";
+    private static final String TAG_TASKS = "TAG TASKS";
+    private String tag;
+
     private ActivityMainBinding binding;
     private Fragment fragmentHeader = null;
     private Fragment fragmentMain = null;
+    private Fragment fragmentMainTasks = new TasksFragment();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -61,15 +66,20 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
             case R.id.home:
                 fragmentHeader = new HeaderHomeFragment();
                 fragmentMain = new HomeFragment();
-                getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader).commit();
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMain).commit();
+                tag = TAG_HOME;
+                getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader, tag).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMain, tag).commit();
                 break;
             case R.id.Tasks:
                 fragmentHeader = new HeaderTasksFragment();
                 fragmentMain = new TasksFragment();
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMain).commit();
+                tag = TAG_TASKS;
+                getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader, tag).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMainTasks, tag).commit();
                 break;
         }
+/*        getSupportFragmentManager().beginTransaction().replace(R.id.header_container, fragmentHeader, tag).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMain, tag).commit();*/
         return true;
     };
 
@@ -87,9 +97,16 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
     @Override
     public void applySubmission(String taskName, int amountCompleted, int index) {
         Log.d(LOG_TAG, "Apply submission main");
+        // Update millilitres count
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_container, TasksFragment.newInstance(taskName, amountCompleted, index), LOG_TAG)
-                .commit();
+
+        // Update current state
+        if (getSupportFragmentManager().findFragmentByTag(TAG_TASKS) == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMainTasks, TAG_TASKS).commit();
+        }
+        else {
+            TasksFragment tasksFragment = (TasksFragment) getSupportFragmentManager().findFragmentByTag(TAG_TASKS);
+            tasksFragment.updateCurrentState(taskName, amountCompleted, index);
+        }
     }
 }

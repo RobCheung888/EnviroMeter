@@ -54,6 +54,15 @@ public class TaskRecycleView extends RecyclerView.Adapter<TaskRecycleView.ViewHo
         notifyDataSetChanged();
     }
 
+    public void setCurrentState(ArrayList<Task> goals, int index, int amountFiled)
+    {
+        this.goal = goals;
+        int newCurrentState = Integer.valueOf(goals.get(index).getCurrentState()) + amountFiled;
+
+        goals.get(index).setCurrentState(String.valueOf(newCurrentState));
+        notifyItemChanged(index);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull TaskRecycleView.ViewHolder holder, int position)
     {

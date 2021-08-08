@@ -43,6 +43,10 @@ public class SubmissionDialog extends AppCompatDialogFragment {
     // Listener for when data is submitted
     private SubmissionDialogListener listener;
 
+    public interface SubmissionDialogListener {
+        void applySubmission(String taskName, int amountCompleted, int index);
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -187,7 +191,9 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         }
     }
 
-    public interface SubmissionDialogListener {
-         void applySubmission(String taskName, int amountCompleted, int index);
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
     }
 }

@@ -28,20 +28,11 @@ public class TasksFragment extends Fragment {
 
     private DataTargets dataTargets = new DataTargets();
     private Context context = getContext();
+    private TaskRecycleView adapter;
 
     private String taskName;
     private int amountFilled;
     private int index;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            taskName = getArguments().getString(BUNDLE_TAG_TASK_NAME);
-            Log.d(LOG_TAG, "Fragment: " + taskName);
-        }
-    }
 
     @Nullable
     @Override
@@ -50,7 +41,8 @@ public class TasksFragment extends Fragment {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_tasks, container,false);
         RecyclerView recyclerView = view.findViewById(R.id.goalRecyclerView);
 
-        TaskRecycleView adapter = new TaskRecycleView(this.getContext());
+        // Set card views
+        adapter = new TaskRecycleView(this.getContext());
         adapter.setGoal(dataTargets.getTasks());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
@@ -59,12 +51,13 @@ public class TasksFragment extends Fragment {
         return view;
     }
 
-    public static TasksFragment newInstance(String taskName, int amountFilled, int index) {
-        TasksFragment tasksFragment = new TasksFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString(BUNDLE_TAG_TASK_NAME,taskName);
-        tasksFragment.setArguments(bundle);
+    public void updateCurrentState(String taskName, int amountFilled, int index) {
+        Log.d(LOG_TAG, "Change current state");
+        adapter.setCurrentState(dataTargets.getTasks(), index, amountFilled);
+    }
 
-        return tasksFragment;
+    // Getter so all fragments and activities can access same data set
+    public DataTargets getDataTargets() {
+        return dataTargets;
     }
 }
