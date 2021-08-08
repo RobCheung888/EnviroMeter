@@ -34,6 +34,7 @@ public class SubmissionDialog extends AppCompatDialogFragment {
       "Turn off AC", "Go bike-riding", "Clean up litter","Take public transit", "Open windows", "Turn off lights"
     };
 
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
