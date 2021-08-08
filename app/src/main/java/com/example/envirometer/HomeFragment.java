@@ -19,12 +19,20 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        DataTargets goals = new DataTargets();
 
+        int level1 = 300;
+        DataTargets goals = new DataTargets();
         TextView volume = view.findViewById(R.id.text_amount_filled);
-        volume.setText(goals.getTasks().get(1).getCurrentState());
+        volume.setText(currentLevel() + " / " + level1 + "mL");
 
         return view;
 
     }
+
+    public int currentLevel()
+    {
+        //TODO: Add a math formula here to calculate the avg of current water level
+        return 0;
+    }
+
 }
