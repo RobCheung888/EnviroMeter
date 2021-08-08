@@ -14,11 +14,14 @@ import com.example.envirometer.R;
 import com.example.envirometer.data.GetDataTargets;
 import com.example.envirometer.standalone.Utility;
 
+import me.itangqi.waveloadingview.WaveLoadingView;
+
 public class HomeFragment extends Fragment {
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
     private static int totalPointsWorth = 0;
 
     private TextView volume;
+    private WaveLoadingView waveLoadingView;
     private int levelOne = 670;
 
     @Override
@@ -27,7 +30,10 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         volume = view.findViewById(R.id.text_amount_filled);
+        waveLoadingView = view.findViewById(R.id.waveLoadingView);
+
         volume.setText(totalPointsWorth + "mL" + " / " + levelOne + "mL");
+        setWaveLoadingView();
 
         return view;
 
@@ -42,6 +48,7 @@ public class HomeFragment extends Fragment {
 
         Log.d(LOG_TAG, String.valueOf(pointsWorth));
         setCompletedAmount(pointsWorth);
+        setWaveLoadingView();
         volume.setText(totalPointsWorth + "mL" + " / " + levelOne + "mL");
     }
 
@@ -57,9 +64,13 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    public int currentLevel()
+    public int setWaveLoadingView()
     {
         //TODO: Add a math formula here to calculate the avg of current water level
+        float percentage = ((float)(totalPointsWorth) / (float)(levelOne)) * 250;
+        int percentageInt = Math.round(percentage);
+        Log.d(LOG_TAG, "fill up by " + percentageInt + " %");
+        waveLoadingView.setProgressValue(percentageInt);
         return 0;
     }
 
