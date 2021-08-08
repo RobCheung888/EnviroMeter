@@ -60,7 +60,8 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         // Create drop-down menu
         //TODO: Create single dropdown item
         ArrayList<String> tasks = populateArrayWithTasks();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, [], tasks)
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,[], tasks)
+        goalsAutoCompleteTextView.setAdapter(adapter);
 
         // Set upload button to visible and uploaded to invisible
         uploadImageButton.setVisibility(View.VISIBLE);
