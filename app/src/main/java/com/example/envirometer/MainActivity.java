@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
 
     private static final String TAG_HOME = "HOME_TAG";
     private static final String TAG_TASKS = "TAG TASKS";
-    private String tag;
+    private String tag = TAG_HOME;
 
     private ActivityMainBinding binding;
     private Fragment fragmentHeader = null;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements SubmissionDialog.
 
         binding.bottomNav.setOnItemSelectedListener(bottomNavMethod);
         getSupportFragmentManager().beginTransaction().replace(R.id.header_container, new HeaderHomeFragment()).commit();
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMainHome).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragmentMainHome, tag).commit();
     }
 
     private NavigationBarView.OnItemSelectedListener bottomNavMethod = item -> {

@@ -10,14 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.envirometer.MainActivity;
 import com.example.envirometer.R;
-import com.example.envirometer.data.DataTargets;
 import com.example.envirometer.data.GetDataTargets;
 
 public class HomeFragment extends Fragment {
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
-    private static final int amountCompleted;
+    private static int amountCompleted = 0;
 
     private TextView volume;
     private int levelOne = 670;
@@ -28,7 +26,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         volume = view.findViewById(R.id.text_amount_filled);
-        volume.setText(currentLevel() + "mL" + " / " + levelOne + "mL");
+        volume.setText(amountCompleted + "mL" + " / " + levelOne + "mL");
 
         return view;
 
@@ -41,6 +39,7 @@ public class HomeFragment extends Fragment {
         if (!isTaskComplete(amountCompleted, totalAmount)) return;
 
         Log.d(LOG_TAG, String.valueOf(amountCompleted));
+        setCompletedAmount(amountCompleted);
         volume.setText(amountCompleted + "mL" + " / " + levelOne + "mL");
     }
 
@@ -61,12 +60,9 @@ public class HomeFragment extends Fragment {
         return 0;
     }
 
-    public int getCurrentLevel()
+    public static int setCompletedAmount(int amountCompletedFinal)
     {
-        return 0;
-    }
-
-    public int updateAmountFilledLevel(int amountToAdd) {
+        amountCompleted = amountCompletedFinal;
         return 0;
     }
 
