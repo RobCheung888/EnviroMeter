@@ -10,10 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,6 +30,10 @@ public class SubmissionDialog extends AppCompatDialogFragment {
     private EditText amountCompletedEditText;
     private AutoCompleteTextView dropDownSelectGoal;
 
+    private static final String[] goals = new String[]{
+      "Turn off AC", "Go bike-riding", "Clean up litter","Take public transit", "Open windows", "Turn off lights"
+    };
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         cancelButton = view.findViewById(R.id.button_cancel);
         fillButton = view.findViewById(R.id.button_fill);
         amountCompletedEditText = view.findViewById(R.id.input_amount_completed);
+        AutoCompleteTextView goal = view.findViewById(R.id.dropdown_goals_option);
 
         //Set upload button to visible and uploaded to invisible
         uploadImageButton.setVisibility(View.VISIBLE);
