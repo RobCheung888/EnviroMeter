@@ -37,6 +37,9 @@ public class SubmissionDialog extends AppCompatDialogFragment {
     private AutoCompleteTextView dropDownSelectGoal;
     private DataTargets dataTargets = new DataTargets();
 
+    // Listener for when data is submitted
+    private SubmissionDialogListener listener;
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -75,15 +78,18 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         fillButton.setOnClickListener((View.OnClickListener) v -> {
             //TODO: Write code to add water
 
-            //Collect data from user input and adjust other values accordingly
+            // Collect data from user input and adjust other values accordingly
             try {
+                // Read amount completed
                 int amountCompleted = Integer.valueOf(amountCompletedEditText.getText().toString());
                 Log.d(LOG_TAG, "Amount completed: " + amountCompleted);
-            } catch(NumberFormatException ex) {
-                Utility.displayToast(getContext(), "Cannot register submission amount");
-            }
 
-            getDialog().dismiss();
+//                String taskName = goalsAutoCompleteTextView.
+                listener.applySubmission(taskName, amountCompleted);
+                getDialog().dismiss();
+            } catch(NumberFormatException ex) {
+                Utility.displayToast(getContext(), "Please enter submission amount");
+            }
         });
 
         return builder.create();
@@ -103,9 +109,7 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         return taskItems;
     }
 
-    public interface SubmissionDialogListener {
-        void applySubmissionAmount(int amountCompleted);
-    }
+
 
     private void pickImage() {
         if (ActivityCompat.checkSelfPermission(getContext(), READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
@@ -145,5 +149,21 @@ public class SubmissionDialog extends AppCompatDialogFragment {
             uploadedImageButton.setVisibility(View.VISIBLE);
             return;
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try
+        {
+            listener = (SubmissionDialogListener) context;
+        } catch (Exception e)
+        {
+            throw new ClassCastException(context.toString() + "Must implement ExampleDialogListener");
+        }
+    }
+
+    public interface SubmissionDialogListener {
+         void applySubmission(String taskName, int amountCompleted);
     }
 }

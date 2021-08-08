@@ -19,7 +19,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SubmissionDialog.SubmissionDialogListener {
     public static final String EXTRA_MESSAGE =
             "com.example.android.environmeter.extra.MESSAGE";
     public static final int EXTRA_REQUEST_CODE = 1;
@@ -75,5 +75,10 @@ public class MainActivity extends AppCompatActivity {
     public void openSubmissionDialog(View view) {
         SubmissionDialog submissionDialog = new SubmissionDialog();
         submissionDialog.show(getSupportFragmentManager(), "Submission Dialog");
+    }
+
+    @Override
+    public void applySubmission(String taskName, int amountCompleted) {
+
     }
 }
