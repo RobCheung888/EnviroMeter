@@ -15,4 +15,5 @@
     <color name="light_sky_blue">#ABD8FC</color>
 
     <color name="edit_text_bg">#EBECF0</color>
+    <color name="hint_gray">#919295</color>
 </resources>

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DataTargets
 {
-    private static ArrayList<Task> tasks = new ArrayList<>();
+    private ArrayList<Task> tasks = new ArrayList<>();
 
     public DataTargets()
     {
@@ -16,7 +16,7 @@ public class DataTargets
         tasks.add(new Task("Turn off lights", "0", "10", 20));
     }
 
-    public static ArrayList<Task> getTasks()
+    public ArrayList<Task> getTasks()
     {
         return tasks;
     }

@@ -34,10 +34,7 @@ public class SubmissionDialog extends AppCompatDialogFragment {
     private ImageView cancelButton, uploadImageButton, fillButton, uploadedImageButton;
     private EditText amountCompletedEditText;
     private AutoCompleteTextView dropDownSelectGoal;
-
-    private static final String[] goals = new String[] {
-      "Turn off AC", "Go bike-riding", "Clean up litter","Take public transit", "Open windows", "Turn off lights"
-    };
+    private DataTargets dataTargets = new DataTargets();
 
     @NonNull
     @Override
@@ -60,7 +57,8 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         // Create drop-down menu
         //TODO: Create single dropdown item
         ArrayList<String> tasks = populateArrayWithTasks();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,[], tasks)
+        Log.d(LOG_TAG, dataTargets.getTasks().get(0).toString());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireContext(), R.layout.drop_item, tasks);
         goalsAutoCompleteTextView.setAdapter(adapter);
 
         // Set upload button to visible and uploaded to invisible
@@ -93,11 +91,12 @@ public class SubmissionDialog extends AppCompatDialogFragment {
     // Populate Array with tasks from database
     private ArrayList<String> populateArrayWithTasks() {
         ArrayList<String> taskItems = new ArrayList<String>();
-        ArrayList<Task> allTasks = DataTargets.getTasks();
+        ArrayList<Task> allTasks = dataTargets.getTasks();
         
         int sizeOfArray = allTasks.size();
         for (int i = 0; i < sizeOfArray; i++) {
-            taskItems.add(allTasks.get(i).toString());
+            taskItems.add(allTasks.get(i).getGoal());
+            Log.d(LOG_TAG, allTasks.get(i).toString());
         }
         
         return taskItems;
