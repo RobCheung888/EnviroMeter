@@ -17,7 +17,7 @@
         android:paddingBottom="40dp">
 
         <TextView
-            android:id="@+id/text_level"
+            android:id="@+id/text_goals"
             style="@style/header_text"
             android:text="@string/text_goals"
             app:layout_constraintBottom_toBottomOf="parent"
