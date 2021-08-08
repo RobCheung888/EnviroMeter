@@ -55,7 +55,7 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         cancelButton = view.findViewById(R.id.button_cancel);
         fillButton = view.findViewById(R.id.button_fill);
         amountCompletedEditText = view.findViewById(R.id.input_amount_completed);
-        AutoCompleteTextView goal = view.findViewById(R.id.dropdown_goals_option);
+        AutoCompleteTextView goalsAutoCompleteTextView = view.findViewById(R.id.dropdown_goals_option);
 
         // Create drop-down menu
         //TODO: Create single dropdown item
