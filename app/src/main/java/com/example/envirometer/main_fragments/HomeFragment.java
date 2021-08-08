@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.envirometer.R;
 import com.example.envirometer.data.GetDataTargets;
+import com.example.envirometer.standalone.Utility;
 
 public class HomeFragment extends Fragment {
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
@@ -46,6 +47,7 @@ public class HomeFragment extends Fragment {
     private boolean isTaskComplete(int amountCompleted, int totalAmount) {
         if (amountCompleted >= totalAmount) {
             Log.d(LOG_TAG, "Full");
+            Utility.showCorrectSnackbar(getActivity());
             return true;
         }
         else {
