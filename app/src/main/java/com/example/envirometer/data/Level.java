@@ -1,4 +1,4 @@
-package com.example.envirometer;
+package com.example.envirometer.data;
 
 public class Level
 {

@@ -1,4 +1,4 @@
-package com.example.envirometer;
+package com.example.envirometer.main_fragments;
 
 import android.Manifest;
 import android.app.Activity;
@@ -18,11 +18,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.core.app.ActivityCompat;
 
+import com.example.envirometer.R;
 import com.example.envirometer.standalone.Utility;
-import com.example.envirometer.storage.DataTargets;
-import com.example.envirometer.storage.Task;
+import com.example.envirometer.data.DataTargets;
+import com.example.envirometer.data.Task;
 
-import java.lang.annotation.Target;
 import java.util.ArrayList;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -34,8 +34,11 @@ public class SubmissionDialog extends AppCompatDialogFragment {
 
     private ImageView cancelButton, uploadImageButton, fillButton, uploadedImageButton;
     private EditText amountCompletedEditText;
-    private AutoCompleteTextView dropDownSelectGoal;
+    private AutoCompleteTextView goalsAutoCompleteTextView;
     private DataTargets dataTargets = new DataTargets();
+
+    private int indexDropItem;
+    private boolean isTaskChosen = false;
 
     // Listener for when data is submitted
     private SubmissionDialogListener listener;
@@ -56,7 +59,7 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         cancelButton = view.findViewById(R.id.button_cancel);
         fillButton = view.findViewById(R.id.button_fill);
         amountCompletedEditText = view.findViewById(R.id.input_amount_completed);
-        AutoCompleteTextView goalsAutoCompleteTextView = view.findViewById(R.id.dropdown_goals_option);
+        goalsAutoCompleteTextView = view.findViewById(R.id.dropdown_goals_option);
 
         // Create drop-down menu
         //TODO: Create single dropdown item
@@ -64,6 +67,17 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         Log.d(LOG_TAG, dataTargets.getTasks().get(0).toString());
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireContext(), R.layout.drop_item, tasks);
         goalsAutoCompleteTextView.setAdapter(adapter);
+
+        // Read index of task
+        // Listener for drop down menu
+        goalsAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                indexDropItem = position;
+                isTaskChosen = true;
+                Log.d(LOG_TAG, "Position: " + position);
+            }
+        });
 
         // Set upload button to visible and uploaded to invisible
         uploadImageButton.setVisibility(View.VISIBLE);
@@ -78,16 +92,25 @@ public class SubmissionDialog extends AppCompatDialogFragment {
         fillButton.setOnClickListener((View.OnClickListener) v -> {
             //TODO: Write code to add water
 
+            // Do not cancel dialog if task is not selected
+            if (isTaskChosen == false) {
+                Utility.displayToast(getContext(),"Please select task");
+                return;
+            }
+
             // Collect data from user input and adjust other values accordingly
             try {
                 // Read amount completed
                 int amountCompleted = Integer.valueOf(amountCompletedEditText.getText().toString());
                 Log.d(LOG_TAG, "Amount completed: " + amountCompleted);
 
+                // Read task name
                 String taskName = goalsAutoCompleteTextView.getText().toString();
                 Log.d(LOG_TAG, "Task completed: " + taskName);
 
-                listener.applySubmission(taskName, amountCompleted);
+                Log.d(LOG_TAG, "Index: " + indexDropItem);
+
+                listener.applySubmission(taskName, amountCompleted, indexDropItem);
                 getDialog().dismiss();
             } catch(NumberFormatException ex) {
                 Utility.displayToast(getContext(), "Please enter submission amount");
@@ -156,16 +179,15 @@ public class SubmissionDialog extends AppCompatDialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        try
-        {
+
+        try {
             listener = (SubmissionDialogListener) context;
-        } catch (Exception e)
-        {
-            throw new ClassCastException(context.toString() + "Must implement ExampleDialogListener");
+        } catch (Exception e) {
+            throw new ClassCastException(context.toString() + "Must implement SubmissionDialogListener");
         }
     }
 
     public interface SubmissionDialogListener {
-         void applySubmission(String taskName, int amountCompleted);
+         void applySubmission(String taskName, int amountCompleted, int index);
     }
 }

@@ -16,5 +16,6 @@
     >
 
     <string name="text_first_task">Choose tasks</string>
+    <string name="FRAGMENT_TASKS_TAG">FRAGMENT_TASKS_TAG</string>
 
 </resources>

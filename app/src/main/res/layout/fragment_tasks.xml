@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:layout_centerHorizontal="true"
-             tools:context=".TasksFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_tasks"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:tag="@string/FRAGMENT_TASKS_TAG"
+    tools:context=".main_fragments.TasksFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/task_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/gradient"
-            android:paddingStart="54dp"
-            android:paddingTop="50dp"
-            android:paddingEnd="54dp"
-            android:paddingBottom="40dp">
+        android:id="@+id/task_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient"
+        android:paddingStart="54dp"
+        android:paddingTop="50dp"
+        android:paddingEnd="54dp"
+        android:paddingBottom="40dp">
 
         <TextView
             android:id="@+id/text_goals"
             style="@style/header_text"
-            android:text="Tasks"
             android:paddingTop="50dp"
+            android:text="Tasks"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.003"
@@ -32,12 +34,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:id="@+id/goalRecyclerView"
-            android:paddingTop="188dp"
-            android:layout_alignParentBottom="true"/>
+        android:id="@+id/goalRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:paddingTop="188dp" />
 
 </RelativeLayout>
 

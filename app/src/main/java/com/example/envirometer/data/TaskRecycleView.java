@@ -1,4 +1,4 @@
-package com.example.envirometer;
+package com.example.envirometer.data;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.envirometer.storage.Task;
+import com.example.envirometer.R;
 
 import java.util.ArrayList;
 

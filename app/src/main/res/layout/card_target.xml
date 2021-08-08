@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/card_frame"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        tools:context=".TasksFragment"
+        tools:context=".main_fragments.TasksFragment"
         >
 
     <androidx.cardview.widget.CardView
@@ -60,6 +60,7 @@
                     android:layout_toRightOf="@id/status"
                     android:text="done"
                     android:textSize="20sp"
+                    android:textColor="@color/dark_blue"
                     android:layout_below="@id/goalname"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="30dp"

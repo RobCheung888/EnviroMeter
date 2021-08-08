@@ -1,4 +1,4 @@
-package com.example.envirometer.storage;
+package com.example.envirometer.data;
 
 public class Task
 {
